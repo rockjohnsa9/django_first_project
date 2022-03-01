@@ -248,4 +248,4 @@ staticfiles
 staticfiles/
 **/images/profile
 **/images/project
-!src/static/images/profile/user-default.png
+!/src/static/images/profile/user-default.png
