@@ -55,36 +55,7 @@
     </div>
   </section>
 
-
-  {% if projects.has_other_pages %}
-  <div class="pagination">
-    <ul class="container">
-      <!-- <li><a href="?page={{page.start_index}}" >First</a></li> -->
-      <!-- <li><a href="?page={% if projects.has_previous %}{{projects.previous_page_number}}{% else %}{{projects.start_index}}{% endif %}">&#10094; Prev</a></li> -->
-      
-      {% if projects.has_previous %}
-      <li><a href="?page={{projects.previous_page_number}}">&#10094; Prev</a></li>
-      {% endif %}
-      
-      {% for page in paginator.page_range %}
-
-        {% if projects.number == page %}
-          <li><a href="?page={{page}}" class="btn page-link btn--sub">{{page}}</a></li>
-        
-        {% elif page > projects.number|add:'-3' and page < projects.number|add:'3'  %}
-          <li><a href="?page={{page}}" class="btn page-link">{{page}}</a></li>
-        {% endif %}
-      {% endfor %}
-
-      {% if projects.has_next %}
-      <li><a href="?page={{projects.next_page_number}}">Next &#10095;</a></li>
-      {% endif %}
-
-      <!-- <li><a href="?page={% if projects.has_next %}{{projects.next_page_number}}{% else %}{{projects.end_index}}{% endif %}">Next &#10095;</a></li> -->
-    </ul>
-  </div>
-  {% endif %}
-
+  {% include 'pagination.html' with queryset=projects paginator=paginator %}
 </main>
 <br />
 <br />

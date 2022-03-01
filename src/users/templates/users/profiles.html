@@ -62,4 +62,7 @@
     </div>
   </section>
 </main>
+
+{% include 'pagination.html' with queryset=profiles paginator=paginator %}
+
 {% endblock %}

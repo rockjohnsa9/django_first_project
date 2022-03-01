@@ -5,6 +5,8 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.db.models import Q
 
+from helpers.pagination import paginateQueryset
+
 from .utils import searchProfiles
 from .forms import CustomUserCreationForm, ProfileForm, SkillForm
 from .models import Profile, Skill
@@ -74,6 +76,7 @@ def registerUser(request):
 
 def profiles(request):
     profiles, search_query = searchProfiles(request)
+    profiles, paginator = paginateQueryset(request, profiles)
     context = {
         'profiles': profiles,
         'search_query': search_query
